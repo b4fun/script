@@ -817,6 +817,12 @@ func (p *Pipe) Wait() {
 	}
 }
 
+// WaitErr combines Wait and Error calls into one.
+func (p *Pipe) WaitErr() error {
+	p.Wait()
+	return p.Error()
+}
+
 // WriteFile writes the input to the specified file, and returns the number of
 // bytes successfully written, or an error. If the file already exists, it is
 // truncated and the new data will replace the old.
